@@ -27,11 +27,11 @@ Minimal dependencies:
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
-    "jose": "^4.17.1",
-    "node-fetch": "^3.3.1"
+    "jose": "^6.1.0",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
-    "esbuild": "^0.19.0"
+    "esbuild": "^0.25.10"
   }
 }
 ```
