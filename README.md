@@ -1,17 +1,27 @@
-Project Structure
-src/
-│   └─ index.mjs      <-- your Lambda@Edge code (the optimized version I gave)
-│
-├─ package.json
-└─ build.js           <-- esbuild build script
+# Lambda@Edge Okta Authentication
 
+A lightweight, production-ready Lambda@Edge function for securing CloudFront with **Okta authentication**.
+Optimized for **Node.js 22 runtime** with ESBuild bundling.
 
 ---
 
-2️⃣ package.json
+## 📂 Project Structure
+
+```
+src/
+│   └─ index.mjs      <-- your Lambda@Edge code (optimized)
+│
+├─ package.json
+└─ build.js           <-- esbuild build script
+```
+
+---
+
+## 📦 package.json
 
 Minimal dependencies:
 
+```json
 {
   "name": "lambda-okta-auth",
   "version": "1.0.0",
@@ -24,23 +34,23 @@ Minimal dependencies:
     "esbuild": "^0.19.0"
   }
 }
+```
 
-jose → JWT verification
-
-node-fetch → For fetch in Node 22 Lambda@Edge
-
-esbuild → Bundler
-
+* **jose** → JWT verification
+* **node-fetch** → Fetch API for Node 22 Lambda@Edge
+* **esbuild** → Bundler
 
 Install dependencies:
 
+```bash
 npm install
-
+```
 
 ---
 
-3️⃣ Build Script (build.js)
+## ⚡ Build Script (`build.js`)
 
+```js
 import esbuild from 'esbuild';
 
 esbuild.build({
@@ -59,69 +69,74 @@ esbuild.build({
   console.error(err);
   process.exit(1);
 });
-
+```
 
 ---
 
-4️⃣ Build the Bundle
+## 🛠️ Build the Bundle
 
+```bash
 node build.js
+```
 
-Output: dist/index.mjs
-
-Size: usually <1 MB (with minification)
-
-Ready to zip and upload to Lambda@Edge.
-
-
+**Output:** `dist/index.mjs`
+**Size:** <1 MB (with minification)
+✅ Ready to zip and upload to **Lambda@Edge**.
 
 ---
 
-5️⃣ Zip for Deployment
+## 📦 Zip for Deployment
 
+```bash
 cd dist
 zip -r lambda-okta-auth.zip index.mjs
+```
 
-Upload lambda-okta-auth.zip to AWS Lambda.
+Upload `lambda-okta-auth.zip` to **AWS Lambda**.
 
-Runtime: Node.js 22.x
-
-Handler: index.handler
-
-
+* **Runtime:** Node.js 22.x
+* **Handler:** `index.handler`
 
 ---
 
-6️⃣ Lambda@Edge Attachment
+## 🌍 Lambda@Edge Attachment
 
-CloudFront Event:
+Attach the Lambda@Edge function to CloudFront events:
 
-Origin Request → checks authentication before reaching your origin
+* **Origin Request** → checks authentication before reaching origin
+* **Viewer Request** → faster redirect but slightly more limited
 
-Viewer Request → faster redirect but slightly more limited
+### Environment Variables
 
+Required:
 
-Configure Environment Variables:
+* `OKTA_ISSUER`
+* `OKTA_CLIENT_ID`
+* `OKTA_CLIENT_SECRET`
+* `COOKIE_SIGNING_KEY`
+* `CF_REDIRECT_URI`
 
-OKTA_ISSUER, OKTA_CLIENT_ID, OKTA_CLIENT_SECRET
+Optional:
 
-COOKIE_SIGNING_KEY, CF_REDIRECT_URI
-
-Optional: COOKIE_NAME, STATE_COOKIE_NAME, COOKIE_MAX_AGE_SECONDS
-
-
-
+* `COOKIE_NAME`
+* `STATE_COOKIE_NAME`
+* `COOKIE_MAX_AGE_SECONDS`
 
 ---
 
-✅ Benefits of this setup:
+## ✅ Benefits
 
-Single minified file <1 MB
+* Single minified file **<1 MB**
+* Fast execution at CloudFront edge
+* Production-ready with **secure cookies** and **JWT validation**
+* **JWKS caching** and **state validation** for security
+* Easy to maintain, extend, and debug
 
-Fast execution at CloudFront edge
+---
 
-Production-ready with secure cookies and JWT validation
+## 🚀 Deployment Flow
 
-JWKS caching and state validation for security
-
-Easy to maintain, extend, and debug
+1. Write your Lambda@Edge logic in `src/index.mjs`
+2. Run `node build.js` → generates `dist/index.mjs`
+3. Zip the output → `lambda-okta-auth.zip`
+4. Upload to AWS Lambda and attach to CloudFront
