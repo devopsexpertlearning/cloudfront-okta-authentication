@@ -1,0 +1,12 @@
+{
+  "name": "lambda-okta-auth",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "jose": "^4.17.1",
+    "node-fetch": "^3.3.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.0"
+  }
+}
