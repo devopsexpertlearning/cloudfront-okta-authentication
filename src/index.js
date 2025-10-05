@@ -19,7 +19,7 @@ const PARAMETERS = {
 };
 
 // Endpoint for login redirects (should match Okta app settings)
-const LOGIN_ENDPOINT = '/login';
+const LOGIN_ENDPOINT = '/authorization-code/callback';
 
 // ====== UTILITY FUNCTIONS ======
 
