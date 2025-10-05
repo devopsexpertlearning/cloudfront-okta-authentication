@@ -94,3 +94,12 @@ Required:
 1. Write your Lambda@Edge logic in `src/index.js`
 2. Zip the output → `okta-auth.zip`
 3. Upload to AWS Lambda and attach to CloudFront
+
+## Screenshots
+
+<img width="1253" height="983" alt="okta" src="https://github.com/user-attachments/assets/3ba2ba2d-24a7-4340-8382-3edca5da0410" />
+
+
+<img width="1778" height="1015" alt="okta-2" src="https://github.com/user-attachments/assets/a595388e-f103-4839-a1f6-59ce9bc1988a" />
+
+
