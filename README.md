@@ -18,7 +18,7 @@ src/
 
 Minimal dependencies:
 
-```json
+```bash
 # Run this
 
 npm init -y
@@ -51,7 +51,7 @@ zip -r okta-auth.zip index.js node_modules ;
 ---
 
 
-Upload `lambda-okta-auth.zip` to **AWS Lambda**.
+Upload `okta-auth.zip` to **AWS Lambda**.
 
 * **Runtime:** Node.js 22.x
 * **Handler:** `index.handler`
