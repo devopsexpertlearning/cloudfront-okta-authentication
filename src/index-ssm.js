@@ -77,7 +77,7 @@ const LOGIN_SUCCESSFUL_RESPONSE = {
         location: [
             {
                 key: 'Location',
-                value: '/index.html'
+                value: '/'
             }
         ],
         'cache-control': [
