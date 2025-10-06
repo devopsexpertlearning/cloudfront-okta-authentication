@@ -71,7 +71,7 @@ async function generateLoginSuccess(idToken) {
         status: '302', // HTTP redirect to main page
         statusDescription: 'Found',
         headers: {
-            location: [{ key: 'Location', value: '/index.html' }], // Redirect target
+            location: [{ key: 'Location', value: '/' }], // Redirect target
             'set-cookie': [{ key: 'Set-Cookie', value: await generateAuthCookie(idToken) }] // Set auth cookie
         }
     };
