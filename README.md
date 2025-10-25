@@ -9,7 +9,7 @@ Optimized for **Node.js 22 runtime** with ESBuild bundling.
 
 ```
 src/
-│   └─ index.js      <-- your Lambda@Edge code (optimized)
+  └─ index.js      <-- your Lambda@Edge code (optimized)
 ```
 
 ---
