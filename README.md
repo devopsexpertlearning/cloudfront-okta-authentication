@@ -35,6 +35,9 @@ Install dependencies:
 
 npm install cookie jsonwebtoken
 
+#For production-index.js
+npm install cookie jsonwebtoken jwk-to-pem
+
 ```
 
 ---
