@@ -81,6 +81,13 @@ Required:
 * `AUTH_COOKIE_TTL_SEC`
     
 ---
+## Test using localhost
+
+```bash
+node server.js
+
+# Notes : generate self signed certificate or make changes in index.js for redirect url from https ---> http
+```
 
 ## ✅ Benefits
 
